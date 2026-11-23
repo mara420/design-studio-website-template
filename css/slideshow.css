@@ -1,0 +1,67 @@
+/* Codrops Columns slideshow, scoped to the Zafis hero. MIT; ../licenses/codrops.txt */
+.zafis-slides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: 100% / 100%;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: inherit;
+  touch-action: pan-y pinch-zoom;
+  pointer-events: auto;
+}
+
+.zafis-slides .slide {
+  width: 100%;
+  height: 100%;
+  grid-area: 1 / 1 / -1 / -1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.zafis-slides .slide--current {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.zafis-slides .slide__img,
+.zafis-slides .slide__piece {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.zafis-slides .slide__img {
+  will-change: transform, opacity, filter;
+}
+
+.zafis-slides .slide__piece {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.zafis-slides:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: -5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zafis-slides .slide,
+  .zafis-slides .slide__img,
+  .zafis-slides .slide__piece {
+    will-change: auto;
+  }
+}
